@@ -14,15 +14,18 @@ def readData():
 
 def productOfMatchingPair(data, key):
 	start = 0
+	middle = 1
 	end = len(data) - 1
-	while(start < end):
-		sum = data[start] + data[end]
-		if(sum < key):
-			start = start + 1
-		if(sum > key):
-			end = end - 1
-		if(sum == key):
-			return data[start] * data[end]
+	while(start < len(data)):
+		while(end >= middle):
+			sum = data[start] + data[middle] + data[end]
+			if(sum < key):
+				middle = middle + 1
+			if(sum > key):
+				end = end - 1
+			if(sum == key):
+				return data[start] * data[middle] * data[end]
+		start = start + 1
 
 def main():
 	data = readData()
